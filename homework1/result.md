@@ -1,5 +1,7 @@
 # ipynb运行结果 - 在线查看
 
+如果ipynb文件加载失败，则可以在这里查看运行结果。
+
 [main.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/main.ipynb)
 
 [sample.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/sample.ipynb)
