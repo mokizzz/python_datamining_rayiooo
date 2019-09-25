@@ -166,3 +166,11 @@ DBSCAN是一种基于密度的聚类算法，它类似于均值漂移，但具�
 * 倾向于识别凸形分布、大小相近、密度相近的聚类。
 * 中心选择和噪声聚类对结果影响大。
 
+## ipynb文件快速预览
+
+- [main.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/main.ipynb)
+
+- [sample.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/sample.ipynb)
+
+- [plot_document_clustering.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/plot_document_clustering.ipynb)
+- [plot_kmeans_digits.ipynb](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/plot_kmeans_digits.ipynb)
