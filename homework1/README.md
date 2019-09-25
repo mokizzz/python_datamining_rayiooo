@@ -29,18 +29,6 @@
 
 Jupyter Notebook
 
-## 内容
-
-### 1 数据集
-
-使用的数据集有 Digits（手写数字）数据集和 20newsgroups（文章）数据集。
-
-Digits 数据集是用矩阵形式存储的单通道图像，可视化后如下图：
-
-![img](data:image/png;base64,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)
-
-20newsgroups 数据集是纯文本形式的数据集。
-
 ## 运行结果
 
 [图形化的运行结果点这里](https://nbviewer.jupyter.org/github/rayiooo/python_datamining_rayiooo/blob/master/homework1/main.ipynb)
@@ -48,33 +36,133 @@ Digits 数据集是用矩阵形式存储的单通道图像，可视化后如下�
 ### 1 Digits聚类运行结果
 
 ```
-                    	NMI		Homo	Comp
+                    	NMI	Homo	Comp
 k-means             	0.690	0.670	0.712
-AffinityPropagation 	0.616	0.932	0.460
-MeanShift           	0.660	0.833	0.546
+AffinityPropagation 	0.669	0.665	0.674
+MeanShift           	0.470	1.000	0.307
 SpectralClustering  	0.828	0.805	0.853
 AgglomerativeClustering	0.796	0.758	0.836
-DBSCAN              	0.621	0.887	0.477
-GaussianMixture     	0.679	0.657	0.702
+DBSCAN              	0.613	0.605	0.621
+GaussianMixture     	0.680	0.654	0.709
 ```
 
 ### 2 20NewsGroup聚类运行结果
 
 ```
-						NMI		Homo	Comp
-k-means             	0.440	0.439	0.442
-AffinityPropagation 	0.289	0.921	0.172
-MeanShift           	0.271	0.909	0.159
-SpectralClustering  	0.480	0.444	0.522
-AgglomerativeClustering	0.473	0.454	0.492
-DBSCAN              	0.273	0.919	0.161
-GaussianMixture     	0.427	0.427	0.427
---------------------------------------------------
+                    	NMI	Homo	Comp
+k-means             	0.441	0.440	0.443
+AffinityPropagation 	0.289	1.000	0.169
+MeanShift           	0.269	0.901	0.158
+SpectralClustering  	0.481	0.444	0.523
+AgglomerativeClustering	0.473	0.454	0.494
+DBSCAN              	0.428	0.437	0.419
+GaussianMixture     	0.439	0.438	0.440
 ```
 
 
 ## 结论
 
-- SpectralClustering、AgglomerativeClustering 效果最好。
-- AffinityPropagation、MeanShift、DBSCAN 效果最差。
-- k-means、GaussianMixture 表现还不错。
+表现最好的是 SpectralClustering 和 AgglomerativeClustering 聚类算法，它们在两个数据集上都达到了很好的效果。
+
+K-Means 和 GaussianMixture 聚类算法表现不错，并且比较稳定。
+
+AffinityPropagation、MeanShift、DBSCAN 算法对参数的依赖性非常强，调参得当得到的结果也不差，但是调参十分困难，很难找到能够得到较好结果的参数。
+
+AffinityPropagation 耗时最久，因为其时间复杂度很高。MeanShift也比较慢，但参数`bin_seeding=True`可以大大加快它的运行速度。
+
+## 各聚类算法优缺点
+
+### K-Means
+
+优点：
+
+* 算法简单。
+* 复杂度较低。
+
+缺点：
+
+* 随机初始化的中心点对结果影响很大。
+
+### AffinityPropagation
+
+AP算法的基本思想是将全部样本看作网络的节点，然后通过网络中各条边的消息传递计算出各样本的聚类中心。
+
+在实际计算应用中，最重要的两个参数（也是需要手动指定）是Preference和Damping factor。前者定了聚类数量的多少，值越大聚类数量越多；后者控制算法收敛效果。
+
+优点：
+
+* 无需指定聚类数量。
+* 样本质心是某个数据点，而不是一些数据点的平均。
+* 不要求矩阵对称性。
+* 对初始值选择不敏感。
+
+缺点：
+
+* 时间复杂度较高（`O(N*N*logN)`），计算需要很久。
+* 计算效果非常依赖Preference和Damping两个参数。
+
+### Mean-shift
+
+Mean-shift算法是一个迭代的步骤，即先算出当前点的偏移均值，将该点移动到此偏移均值，然后以此为新的起始点，继续移动，直到满足最终的条件。
+
+Mean-shift算法在本实验中表现不好。
+
+### Spectral clustering
+
+谱聚类的主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。距离较远的两个点之间的边权重值较低，而距离较近的两个点之间的边权重值较高，通过对所有数据点组成的图进行切图，让切图后不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高，从而达到聚类的目的。
+
+优点：
+
+* 谱聚类只需要数据之间的相似度矩阵，因此对于处理稀疏数据的聚类很有效。这点传统聚类算法比如K-Means很难做到。
+* 由于使用了降维，因此在处理高维数据聚类时的复杂度比传统聚类算法好。
+
+缺点：
+
+* 如果最终聚类的维度非常高，则由于降维的幅度不够，谱聚类的运行速度和最后的聚类效果均不好。
+* 聚类效果依赖于相似矩阵，不同的相似矩阵得到的最终聚类效果可能很不同。
+
+### Agglomerative clustering
+
+Agglomerative Clutsering 是一种自底而上的层次聚类方法，它能够根据指定的相似度或距离定义计算出类之间的距离。
+
+优点：
+
+- 无需指定聚类数量。
+- 对于距离度量标准的选择并不敏感。
+
+
+缺点：
+
+* 时间复杂度高（`O(n³)`）。
+
+### DBSCAN
+
+DBSCAN是一种基于密度的聚类算法，它类似于均值漂移，但具有一些显著的优点。
+
+优点：
+
+* 无需指定聚类数量。
+* 能够识别噪声。
+* 能发现任意形状的聚类。
+
+缺点：
+
+* cluster密度不同时表现不好。
+* 非常依赖参数epsilon和minPoints。
+* 在高维度表现不好。（因此在该实验中表现不好）
+
+### Gaussian mixtures
+
+高斯混合模型（GMMs）比 K-Means更有灵活性。每个簇的形状都可以用均值和标准差来描述，因此这些簇可以采取任何类型的椭圆形。
+
+优点：
+
+* 应用最为广泛。
+* 收敛速度快。
+* 能扩展以用于大规模的数据集。
+
+缺点：
+
+* 倾向于识别凸形分布、大小相近、密度相近的聚类。
+* 中心选择和噪声聚类对结果影响大。
+
