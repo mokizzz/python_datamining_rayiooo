@@ -12,6 +12,7 @@
 - Affinity propagation
 - Mean-shift
 - Spectral clustering
+- Ward hierarchical clustering
 - Agglomerative clustering
 - DBSCAN
 - Gaussian mixtures
@@ -37,26 +38,28 @@ Jupyter Notebook
 
 ```
                     	NMI	Homo	Comp
-k-means             	0.690	0.670	0.712
+K-Means             	0.690	0.670	0.712
 AffinityPropagation 	0.669	0.665	0.674
 MeanShift           	0.470	1.000	0.307
 SpectralClustering  	0.828	0.805	0.853
-AgglomerativeClustering	0.796	0.758	0.836
+Ward                	0.796	0.758	0.836
+AgglomerativeClustering	0.718	0.678	0.763
 DBSCAN              	0.613	0.605	0.621
-GaussianMixture     	0.680	0.654	0.709
+GaussianMixture     	0.683	0.662	0.706
 ```
 
 ### 2 20NewsGroup聚类运行结果
 
 ```
                     	NMI	Homo	Comp
-k-means             	0.441	0.440	0.443
+K-Means             	0.441	0.439	0.442
 AffinityPropagation 	0.289	1.000	0.169
-MeanShift           	0.269	0.901	0.158
-SpectralClustering  	0.481	0.444	0.523
-AgglomerativeClustering	0.473	0.454	0.494
-DBSCAN              	0.428	0.437	0.419
-GaussianMixture     	0.439	0.438	0.440
+MeanShift           	0.267	0.893	0.157
+SpectralClustering  	0.478	0.442	0.521
+Ward                	0.442	0.439	0.446
+AgglomerativeClustering	0.469	0.419	0.532
+DBSCAN              	0.430	0.423	0.437
+GaussianMixture     	0.432	0.432	0.433
 ```
 
 
