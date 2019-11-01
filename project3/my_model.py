@@ -24,13 +24,13 @@ class MyNet(nn.Module):
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
-        sex = self.embed_sex(x[:, 0].long())
-        multi_a = self.embed_multi_a(x[:, 8].long())
-        multi_b = self.embed_multi_b(x[:, 9].long())
-        multi_c = self.embed_multi_c(x[:, 10].long())
-        multi_d = self.embed_multi_d(x[:, 11].long())
+        sex = self.embed_sex(x[:, 3].long())
+        multi_a = self.embed_multi_a(x[:, 10].long())
+        multi_b = self.embed_multi_b(x[:, 11].long())
+        multi_c = self.embed_multi_c(x[:, 12].long())
+        multi_d = self.embed_multi_d(x[:, 13].long())
 
-        out = torch.cat((x[:, 3:8], x[:, 12:15], x[:, 16:18]), dim=1)
+        out = torch.cat((x[:, 5:10], x[:, 14:19]), dim=1)
         out = torch.cat(
             (out, sex, multi_a, multi_b, multi_c, multi_d), dim=1)
 
