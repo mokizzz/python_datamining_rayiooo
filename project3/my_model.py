@@ -5,9 +5,23 @@ from torch import nn
 from torch.utils.data import Dataset, DataLoader
 
 
-class MyNet(nn.Module):
+class MyNet_v2(nn.Module):
     def __init__(self):
-        super(MyNet, self).__init__()
+        super(MyNet_v2, self).__init__()
+
+        self.bn_input = nn.BatchNorm1d(1, momentum=0.5)
+
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+        out = x
+        out = self.bn_input(out)
+        return out
+
+
+class MyNet_7_Layer(nn.Module):
+    def __init__(self):
+        super(MyNet_7_Layer, self).__init__()
 
         self.embed_sex = nn.Embedding(3, 2)
         self.embed_multi_a = nn.Embedding(2561, 13)
@@ -86,7 +100,7 @@ if __name__ == '__main__':
     from tqdm import tqdm
 
     data_loader = DataLoader(dataset=DS(), batch_size=BATCH_SIZE, shuffle=True)
-    net = MyNet().to(DEVICE)
+    net = MyNet_7_Layer().to(DEVICE)
 
     loss_function = nn.CrossEntropyLoss()
     optimizer = optim.Adam(net.parameters())
