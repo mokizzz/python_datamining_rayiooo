@@ -6,16 +6,49 @@ from torch.utils.data import Dataset, DataLoader
 
 
 class MyNet_v2(nn.Module):
-    def __init__(self):
+    def __init__(self, in_dim, out_dim=2):
         super(MyNet_v2, self).__init__()
 
-        self.bn_input = nn.BatchNorm1d(1, momentum=0.5)
-
+        self.embed_sex = nn.Embedding(3, 2)
+        self.embed_multi_a = nn.Embedding(2561, 13)
+        self.embed_multi_b = nn.Embedding(291, 6)
+        self.embed_multi_c = nn.Embedding(428, 7)
+        self.embed_multi_d = nn.Embedding(1556, 11)
+        self.bn0 = nn.BatchNorm1d(in_dim)
+        self.bn1 = nn.BatchNorm1d(2048)
+        self.bn2 = nn.BatchNorm1d(1024)
+        self.bn3 = nn.BatchNorm1d(512)
+        self.bn4 = nn.BatchNorm1d(256)
+        self.bn5 = nn.BatchNorm1d(128)
+        self.bn6 = nn.BatchNorm1d(64)
+        self.bn7 = nn.BatchNorm1d(32)
+        self.bn8 = nn.BatchNorm1d(16)
+        self.bn9 = nn.BatchNorm1d(8)
+        self.fc1 = nn.Linear(in_dim, 2048)
+        self.fc2 = nn.Linear(2048, 1024)
+        self.fc3 = nn.Linear(1024, 512)
+        self.fc4 = nn.Linear(512, 256)
+        self.fc5 = nn.Linear(256, 128)
+        self.fc6 = nn.Linear(128, 64)
+        self.fc7 = nn.Linear(64, 32)
+        self.fc8 = nn.Linear(32, 16)
+        self.fc9 = nn.Linear(16, 8)
+        self.fc10 = nn.Linear(8, out_dim)
         self.relu = nn.ReLU(inplace=True)
+
 
     def forward(self, x):
         out = x
-        out = self.bn_input(out)
+        out = self.fc1(self.bn0(out))
+        out = self.fc2(self.relu(self.bn1(out)))
+        out = self.fc3(self.relu(self.bn2(out)))
+        out = self.fc4(self.relu(self.bn3(out)))
+        out = self.fc5(self.relu(self.bn4(out)))
+        out = self.fc6(self.relu(self.bn5(out)))
+        out = self.fc7(self.relu(self.bn6(out)))
+        out = self.fc8(self.relu(self.bn7(out)))
+        out = self.fc9(self.relu(self.bn8(out)))
+        out = self.fc10(self.relu(self.bn9(out)))
         return out
 
 
