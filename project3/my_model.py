@@ -9,11 +9,14 @@ class MyNet_v2(nn.Module):
     def __init__(self, in_dim, out_dim=2):
         super(MyNet_v2, self).__init__()
 
+        in_dim = in_dim+1+1+12+5+6+10
         self.embed_sex = nn.Embedding(3, 2)
+        self.embed_access_freq = nn.Embedding(5, 2)
         self.embed_multi_a = nn.Embedding(2561, 13)
         self.embed_multi_b = nn.Embedding(291, 6)
         self.embed_multi_c = nn.Embedding(428, 7)
         self.embed_multi_d = nn.Embedding(1556, 11)
+        self.embed_multi_e = nn.Embedding(2, 1)
         self.bn0 = nn.BatchNorm1d(in_dim)
         self.bn1 = nn.BatchNorm1d(2048)
         self.bn2 = nn.BatchNorm1d(1024)
@@ -38,7 +41,18 @@ class MyNet_v2(nn.Module):
 
 
     def forward(self, x):
-        out = x
+        sex = self.embed_sex(x[:, 3].long())
+        access_freq = self.embed_access_freq(x[:, 4].long())
+        multi_a = self.embed_multi_a(x[:, 10].long())
+        multi_b = self.embed_multi_b(x[:, 11].long())
+        multi_c = self.embed_multi_c(x[:, 12].long())
+        multi_d = self.embed_multi_d(x[:, 13].long())
+        multi_e = self.embed_multi_d(x[:, 14].long())
+
+        out = torch.cat((x[:, 0:3], x[:, 5:10], x[:, 15:]), dim=1)
+        out = torch.cat(
+            (out, sex, access_freq, multi_a, multi_b, multi_c, multi_d, multi_e), dim=1)
+        
         out = self.fc1(self.bn0(out))
         out = self.fc2(self.relu(self.bn1(out)))
         out = self.fc3(self.relu(self.bn2(out)))
